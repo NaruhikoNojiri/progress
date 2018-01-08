@@ -75,7 +75,7 @@ user10 = User.find(10)
       place_address: "東京都豊島区×× #{n+1}-#{n+5}-#{n+10}",
       start_datetime: start_datetime,
       end_datetime: end_datetime,
-      capacity: n*10,
+      capacity: n*10+1,
       fee: n*1000
     )
   elsif n < 14

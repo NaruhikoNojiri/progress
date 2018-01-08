@@ -36,10 +36,20 @@
         <%= f.hidden_field :event_id, :value => @event.id %>
         <%= f.submit "申し込む", class: 'btn btn-default btn-sm btn-success'%>
       <% end %>
+      <% if @event.room_of_event > 0 %>
+        あと<%= @event.room_of_event %>人参加できます。
+      <% else %>
+        現在<%= -@event.room_of_event %>人がキャンセル待ちです。
+      <% end %>
     <% elsif @pm.cancel_flag == true %><!-- 当該イベントをキャンセルしている場合 -->
       <%= form_for(@pm, url: new_participant_management_path, method: 'get') do |f| %>
         <%= f.hidden_field :event_id, :value => @event.id %>
         <%= f.submit "申し込む", class: 'btn btn-default btn-sm btn-success'%>
+      <% end %>
+      <% if @event.room_of_event > 0 %>
+        あと<%= @event.room_of_event %>人参加できます。
+      <% else %>
+        現在<%= -@event.room_of_event %>人がキャンセル待ちです。
       <% end %>
     <% else %><!-- 当該イベント申込済みの場合 -->
       <%= form_for(@pm, url: cancel_participant_managements_path) do |f| %>
@@ -53,6 +63,7 @@
     <% if @participants.blank? %>
       現在このイベントへの申込者はいません
     <% else %>
+      <%= @participants.size %>人が参加予定です！
       <% @participants.each do |participant| %>
       <div class="row">
         <div class="participant_info">

@@ -66,6 +66,8 @@ class EventsController < ApplicationController
       @pm = ParticipantManagement.new
     end
     # キャンセル済の人は表示されないようにする。
-    @participants = event.event_participants.where(participant_managements: {cancel_flag: false})
+    # @participants = event.event_participants.where(participant_managements: {cancel_flag: false})
+    @participants = event.substantial_participants
+
   end
 end
