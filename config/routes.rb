@@ -1,4 +1,29 @@
 Rails.application.routes.draw do
+  root "top#index"
+
+  resources :events
+
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks",
+    registrations: "users/registrations",
+    sessions: "users/sessions"
+  }
+
+  resources :participant_managements, only: [:create, :new] do
+    collection do
+      patch :cancel
+    end
+  end
+
+  resources :users, only: [:show]
+
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

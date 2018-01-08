@@ -47,6 +47,7 @@ gem 'ransack'
 
 # ページネーション実現用。
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 # 様々な形式のテストデータを自動作成
 gem 'faker'
@@ -57,7 +58,13 @@ gem 'cancan'
 
 # herokuからログを取得するためのgem。
 gem 'rails_12factor', group: :production
+
+# bootstrap関連
 gem 'twitter-bootstrap-rails'
+gem 'jquery-ui-rails'
+
+# 曜日表示用
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,26 @@
+<section id="search">
+  <%= search_form_for(@q) do |f| %>
+    <div class="search_input">
+      <%= f.search_field :name_or_summary_cont, class: 'form-control', placeholder: "例) Java,Ruby,Oracle DB" %>
+    </div>
+    <%= f.submit '検索', class: 'btn btn-primary btn-sm btn-success'%><br>
+  <% end %>
+</section>
+<div class="container">
+  <section class="main-header">
+    <p class="flash"><%= notice %><%= alert %></p>
+  </section>
+  <section id="search_result">
+    <div id="result_message">
+      <% if @all_events.blank? %>
+        <strong>指定された検索条件に関する開催予定イベントはありませんでした。</strong>
+      <% else %>
+        <strong><%= @all_events.count %>件のイベントが見つかりました。</strong>
+      <% end %>
+    </div>
+    <% @events.each do |event| %>
+      <%= render partial: 'top/list_events', locals: { event: event }%>
+    <% end %>
+    <%= paginate @events %>
+  </section>
+</div>

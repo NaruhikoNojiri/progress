@@ -1,0 +1,27 @@
+<section class="about">
+  <h1>"progress"へようこそ！</h1>
+  <p>
+    このサイトはプログラミング学習者のためのイベント検索サイトです。<br>
+    自分に合ったイベントを見つけて参加しましょう！
+  </p>
+</section>
+<div class="container">
+  <section class="main-header">
+    <p class="flash"><%= notice %><%= alert %></p>
+  </section>
+  <br>
+  <section id="search">
+    <%= search_form_for(@q, url: events_path) do |f| %>
+      <div class="search_input">
+        <%= f.search_field :name_or_summary_cont, class: 'form-control', placeholder: "例) Java,Ruby,Oracle DB" %>
+      </div>
+      <%= f.submit '検索', class: 'btn btn-primary btn-sm btn-success'%><br>
+    <% end %>
+  </section>
+  <section id="latest_event">
+    <h2 class="center section_header">新着イベント</h2>
+    <% @events.each do |event| %>
+      <%= render partial: 'top/list_events', locals: { event: event }%>
+    <% end %>
+  </section>
+</div>

@@ -1,0 +1,91 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// イベント一覧・検索画面
+.events #search {
+  background: radial-gradient(orange, #FFC7AF);
+  padding: 30px;
+}
+
+#search_result {
+
+}
+
+#result_message {
+  margin: 10px 0 20px 0;
+}
+
+// イベント詳細画面
+#create_action {
+
+}
+
+#show_event {
+  margin: auto;
+  width: 70%;
+  .name {
+  }
+  .start_datetime {
+    border-bottom:  1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  .summary {
+    border-bottom:  1px solid #ccc;
+  }
+  .fee {
+    border-bottom:  1px solid #ccc;
+  }
+  .place {
+    border-bottom:  1px solid #ccc;
+  }
+}
+
+#action {
+  margin: 30px 0 30px 0;
+}
+
+#event_participants {
+  .row {
+    padding: 10px;
+    border :none;
+    border-top:  1px solid #ccc;
+    background-color: inherit;
+  }
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  h3 {
+    padding: 0 0 0 10px;
+  }
+}
+
+#event_participants .participant_info{
+  display: flex;
+  .image {
+    margin-top: 10px;
+  }
+  .participant_name {
+      margin-bottom: 10px;
+  }
+}
+
+#show_event .event_host {
+  .host_name {
+    margin-left: 10px;
+    padding-top: 10px;
+  }
+}
+
+.event_info {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+// イベント新規作成/編集画面
+#input_event {
+  margin: auto;
+  width: 70%;
+}

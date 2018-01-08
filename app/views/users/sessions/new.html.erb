@@ -1,0 +1,69 @@
+<div class="container">
+  <section id="notice"><%= notice %></section>
+  <h2 class="section_header">ログイン</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="alert-danger"><%= devise_error_messages! %></div>
+    <% if @user.errors.any? %>
+      <section id="error_explanation" class="alert-danger">
+        <h3><%= @user.errors.count %>件のエラーがあります</h3>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </section>
+    <% end %>
+    <section id="omniauth_login">
+      <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <div class="col-md-6 col-sm-12">
+              <% if OmniAuth::Utils.camelize(provider) == "Facebook"%>
+                <div id="omniAuth_login_facebook">
+                  <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook btn-lg" do %>
+                      <i><%= image_tag "FB-fLogo-Blue-broadcast-2.png" %>
+                      <%= OmniAuth::Utils.camelize(provider) %>でログイン</i>
+                  <% end %>
+                </div>
+              <% elsif OmniAuth::Utils.camelize(provider) == "Twitter"%>
+                <div id="omniAuth_login_facebook">
+                  <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-twitter btn-lg" do %>
+                      <i><%= image_tag "Twitter_Logo_WhiteOnBlue.png" %>
+                      <%= OmniAuth::Utils.camelize(provider) %>でログイン</i>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end -%>
+      <% end -%>
+    </section>
+
+    <section id="login_info">
+      <h2 id="sign_in_header">またはメールアドレスでログイン</h2>
+      <div class="field">
+        <h3><%= f.label :email %></h3>
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="field">
+        <h3><%= f.label :password %></h3>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="rememberable field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+      <div class="links right">
+        <%= render "users/shared/links_for_login_screen" %>
+      </div>
+
+      <div id="action">
+        <%= f.submit "ログイン", class: 'btn btn-primary btn-sm btn-success' %>
+      </div>
+
+    </section>
+  <% end %>
+</div>

@@ -1,0 +1,68 @@
+<div class="container">
+  <section id="notice"><%= notice %></section>
+  <% if @event.errors.any? %>
+    <section id="error_explanation" class="alert-danger">
+      <h3><%= @event.errors.count %>件のエラーがあります。</h3>
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </section>
+  <% end %>
+  <section id="show_event">
+    <div class="event_host">
+      <%= profile_img(@event.user)%>
+      <span class="host_name">
+        <%= link_to user_path(@event.user) do %>
+          <%= @event.user.name %>さん主催</span>
+        <% end %>
+    </div>
+    <div class="event_info">
+      <h1 class="name"><strong><%= @event.name %></strong></h1>
+      <h3 class="start_datetime">開催日時</h3><%= I18n.l(@event.start_datetime, format: :middle) %>
+      <h3 class="summary">概要</h3><%= @event.summary %>
+      <h3 class="fee">参加費</h3><%= show_fee(@event) %>
+      <h3 class="place">開催地</h3><%= @event.place %><br/>
+      <%= @event.place_address %>
+    </div>
+  </section>
+  <section id="action">
+    <% if @event.user_id == current_user.id %><!-- 当該イベントの主催者の場合 -->
+      <%= link_to "イベント情報の編集",edit_event_path(@event.id), class: 'btn btn-default btn-sm btn-success' %>
+      <%= link_to "イベントの削除",event_path(@event.id), method: :delete, data: {confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn-danger' %>
+    <% elsif @pm.id.blank? %><!-- 当該イベント未申込の場合 -->
+      <%= form_for(@pm, url: new_participant_management_path, method: 'get') do |f| %>
+        <%= f.hidden_field :event_id, :value => @event.id %>
+        <%= f.submit "申し込む", class: 'btn btn-default btn-sm btn-success'%>
+      <% end %>
+    <% elsif @pm.cancel_flag == true %><!-- 当該イベントをキャンセルしている場合 -->
+      <%= form_for(@pm, url: new_participant_management_path, method: 'get') do |f| %>
+        <%= f.hidden_field :event_id, :value => @event.id %>
+        <%= f.submit "申し込む", class: 'btn btn-default btn-sm btn-success'%>
+      <% end %>
+    <% else %><!-- 当該イベント申込済みの場合 -->
+      <%= form_for(@pm, url: cancel_participant_managements_path) do |f| %>
+        <%= f.hidden_field :event_id, :value => @event.id %>
+        <%= f.submit "申し込みを取り消す", data: {confirm: '本当に申し込みをキャンセルしていいですか？'}, class: 'btn btn-default btn-sm btn-danger'%>
+      <% end %>
+    <% end %>
+  </section>
+  <section id="event_participants">
+    <h2 class="section_header">参加者一覧</h2>
+    <% if @participants.blank? %>
+      現在このイベントへの申込者はいません
+    <% else %>
+      <% @participants.each do |participant| %>
+      <div class="row">
+        <div class="participant_info">
+          <div class="image"><%= profile_img(participant)%></div>
+          <%= link_to user_path(participant) do %>
+            <div class="participant_name"><h3><%= participant.name %></h3></div>
+          <% end %>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+  </section>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <section id="user_info">
+    <%= profile_img(@user)%>
+    <h3><%= @user.name %></h3>
+  </section>
+  <section id="introduction">
+    <h2 class="section_header">自己紹介</h2>
+    <%= @user.self_introduction %>
+  </section>
+  <section id="host_event_list">
+    <h2 class="center section_header">主催しているイベント</h2>
+    <% if @events.present? %>
+      <% @events.each do |event| %>
+        <%= render partial: 'top/list_events', locals: { event: event }%>
+      <% end %>
+    <% else %>
+      <strong>主催しているイベントはありません</strong>
+    <% end %>
+  </section>
+</div>

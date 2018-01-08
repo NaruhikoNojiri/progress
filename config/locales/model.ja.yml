@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      event: "イベント"
+      user: "ユーザー"
+      participant_management: "参加者管理"
+
+    attributes:
+      event:
+        content: "内容"
+        name: "イベント名"
+        summary: "イベント概要"
+        place: "開催地名"
+        place_address: "開催地住所"
+        start_datetime: "開始日時"
+        end_datetime: "終了日時"
+        capacity: "定員"
+        fee: "参加費"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        self_introduction: "自己紹介文"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "パスワード(再確認)"
+        remember_me: "ログインを記憶"
+        avatar: "プロフィール写真"
+      participant_managements:
+        event_id: "イベントid"
+        user_id: "ユーザーid"
+        cancel_flag: "キャンセルフラグ"

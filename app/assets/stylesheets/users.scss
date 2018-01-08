@@ -1,0 +1,124 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ユーザー詳細画面
+#user_detail {
+
+}
+
+#user_info {
+  margin: auto;
+  margin-bottom: 30px;
+  width: 70%;
+  display: flex;
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+  }
+  h3 {
+    margin: 30px 0 0 20px;
+  }
+}
+
+#introduction {
+  margin-bottom: 40px;
+}
+
+#host_event_list {
+
+}
+
+// マイページ
+#edit_user_info {
+  margin: auto;
+  margin-bottom: 30px;
+  width: 70%;
+  h3 {
+    padding: 0 0 0 10px;
+  }
+}
+
+#holding_events {
+  margin-bottom: 30px;
+}
+
+#participating_events {
+  margin-bottom: 30px;
+}
+
+.profile_img_upload {
+  display: inline-flex;
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  .btn {
+    margin-top: 10px;
+  }
+}
+
+// サインアップ画面・ログイン画面
+#omniauth_login {
+  display: inline-flex;
+  margin-bottom: 30px;
+  a:link { color: white; }
+  a:visited { color: white; }
+  a:hover { color: white; }
+  a:active { color: white; }
+  img {
+    margin-bottom: 5px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+#sign_up_header {
+  border-bottom: 1px solid #ccc;
+}
+
+#create_user_info {
+  margin: auto;
+  margin-bottom: 30px;
+  width: 70%;
+  h3 {
+    padding: 0 0 0 10px;
+  }
+}
+
+#omniAuth_login_facebook {
+
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+  padding-right: 35px;
+}
+
+.btn-twitter {
+  background-color: #1DA1F2;
+  padding-right: 35px;
+}
+
+#login_info {
+  margin: auto;
+  margin-bottom: 30px;
+  width: 70%;
+  h3 {
+    padding: 0 0 0 10px;
+  }
+}
+
+#sign_in_header {
+  border-bottom: 1px solid #ccc;
+}
+
+.rememberable {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.links {
+}

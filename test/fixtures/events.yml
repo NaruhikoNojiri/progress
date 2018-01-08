@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  name: MyString
+  summary: MyText
+  place: MyString
+  place_address: MyString
+  start_datetime: 2017-12-29 07:45:55
+  end_datetime: 2017-12-29 07:45:55
+  capacity: 1
+  fee: 1
+
+two:
+  user_id: 
+  name: MyString
+  summary: MyText
+  place: MyString
+  place_address: MyString
+  start_datetime: 2017-12-29 07:45:55
+  end_datetime: 2017-12-29 07:45:55
+  capacity: 1
+  fee: 1

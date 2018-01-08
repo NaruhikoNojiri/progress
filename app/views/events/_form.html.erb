@@ -1,0 +1,56 @@
+<section id="notice"><%= notice %></section>
+<% if @event.errors.any? %>
+  <section id="error_explanation" class="alert-danger">
+    <h3><%= @event.errors.count %>件のエラーがあります</h3>
+    <ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </section>
+<% end %>
+<section id="input_event">
+  <%= form_for(@event, url: choose_new_or_edit) do |f| %>
+    <div class="left">
+      <div class="name">
+        <h3><%= f.label :イベント名 %></h3>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="summary">
+        <h3><%= f.label :概要 %></h3>
+        <%= f.text_area :summary, class: 'form-control' %>
+      </div>
+      <div class="place">
+        <h3><%= f.label :開催地名 %></h3>
+        <%= f.text_field :place, class: 'form-control' %>
+      </div>
+      <div class="place_address">
+        <h3><%= f.label :開催地住所 %></h3>
+        <%= f.text_field :place_address, class: 'form-control' %>
+      </div>
+      <div class="datetime">
+        <h3><%= f.label :開催日時 %></h3>
+        <%= f.datetime_select :start_datetime, class: 'form-control' %>
+        <br/>
+        <strong>から</strong>
+        </br>
+        <%= f.datetime_select :end_datetime, class: 'form-control' %>
+      </div>
+      <div class="capacity">
+        <h3><%= f.label :定員 %><small>(単位：人)</small></h3>
+        <%= f.text_field :capacity, class: 'form-control' %>
+      </div>
+      <div class="fee">
+        <h3><%= f.label :参加費 %><small>(単位：円)</small></h3>
+        <%= f.text_field :fee, class: 'form-control' %>
+        <em>*参加費を無料とする場合は空欄にしてください。</em>
+      </div>
+    </div>
+    <div id="action" class="center">
+    <% if action_name == "new" %>
+      <%= f.submit '上記の内容でイベントを作成する', class: 'btn btn-primary btn-sm btn-success'%>
+    <% else %>
+      <%= f.submit '上記の内容でイベントを更新する', class: 'btn btn-primary btn-sm btn-success'%>
+    <% end %>
+  <% end %>
+</section>

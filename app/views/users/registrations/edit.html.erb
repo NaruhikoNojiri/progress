@@ -1,0 +1,89 @@
+<div class="container">
+  <section id="notice"><%= notice %></section>
+  <h2 class="section_header">プロフィール</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="alert-danger"><%= devise_error_messages! %></div>
+
+    <section id="edit_user_info">
+      <h3><label>プロフィール画像</label><small><i>(表示されている画像は現在のプロフィール画像です)</i></small></h3>
+      <div class="profile_img_upload">
+       <%= profile_img(@user) if profile_img(@user) %>
+       <%= f.file_field :avatar, class: "btn" %>
+       <%= f.hidden_field :avatar_cache %>
+      </div>
+      <br/>
+      <div class="field">
+        <h3><%= f.label :email %></h3>
+        <%= f.email_field :email, autofocus: true, class: 'form-control'%>
+      </div>
+
+      <div class="field">
+        <h3><%= f.label :name %></h3>
+        <%= f.text_field :name, autofocus: true, class: 'form-control'%>
+      </div>
+
+      <div class="field">
+        <h3><%= f.label :self_introduction %></h3>
+        <%= f.text_area :self_introduction, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <% if @user.provider.blank? %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <h3><%= f.label :password %><small><i>(パスワードを変更しない場合は空欄にしてください。)</i></small></h3>
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          <% if @minimum_password_length %>
+            <div  class="left"><em>*最低<%= @minimum_password_length %>文字</em></div>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <h3><%= f.label :password_confirmation %></h3>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+        </div>
+      <% end %>
+
+      <div class="field">
+      <% if @user.provider.blank? %>
+        <div class="field">
+          <h3><%= f.label :current_password %><small><i>(プロフィールを更新するために現在のパスワードを入力してください)</i></small>
+          <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+        </div>
+      <% end %>
+      <div id="action">
+        <%= f.submit "プロフィールを更新する", class: 'btn btn-primary btn-sm btn-success' %>
+      </div>
+    </section>
+  <% end %>
+  <section id="holding_events">
+    <h2 class="section_header">主催イベント一覧</h2>
+    <% if @holding_events.blank? %>
+      主催したイベントはありません。
+    <% else %>
+      <% @holding_events.each do |event| %>
+        <%= render partial: 'top/list_events', locals: { event: event }%>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section id="participating_events">
+    <h2 class="section_header">参加イベント一覧</h2>
+    <% if @participating_events.blank? %>
+      参加したイベントはありません。
+    <% else %>
+      <% @participating_events.each do |event| %>
+        <%= render partial: 'top/list_events', locals: { event: event }%>
+      <% end %>
+    <% end %>
+  </section>
+
+  <h2 class="section_header_long">アカウントのキャンセル</h2>
+
+  <p>もう当サイトを利用しませんか? <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+  <%= link_to "戻る", :back %>
+</div>
