@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   if Rails.env.development?

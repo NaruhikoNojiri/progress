@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only:[:create, :show, :edit, :destroy, :update, :destroy]
+  before_action :authenticate_user!, only:[:create, :new, :show, :edit, :destroy, :update, :destroy]
   before_action :set_event, only:[:show,:edit,:update,:destroy]
 
   def index
@@ -68,6 +68,5 @@ class EventsController < ApplicationController
     # キャンセル済の人は表示されないようにする。
     # @participants = event.event_participants.where(participant_managements: {cancel_flag: false})
     @participants = event.substantial_participants
-
   end
 end
