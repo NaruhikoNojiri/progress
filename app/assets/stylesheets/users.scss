@@ -3,6 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // ユーザー詳細画面
+#error_explanation {
+  padding: 20px;
+  margin: auto;
+  width: 50%;
+  h2 {
+    text-align: center;
+    white-space: normal;  //改行しない
+  }
+  h3 {
+      white-space: normal;  //改行しない
+      text-align: center;
+  }
+  li {
+    text-align: left;
+  }
+  color: red;
+}
+
 #user_detail {
 
 }
@@ -121,4 +139,10 @@
 }
 
 .links {
+}
+
+.devise_error {
+  #error_explanation {
+    width: 100%;
+  }
 }

@@ -4,7 +4,7 @@
     <h3><%= @user.name %></h3>
   </section>
   <section id="introduction">
-    <h2 class="section_header">自己紹介</h2>
+    <h2 class="section_header">自己紹介</h2><br/>
     <%= @user.self_introduction %>
   </section>
   <section id="host_event_list">
@@ -14,6 +14,7 @@
         <%= render partial: 'top/list_events', locals: { event: event }%>
       <% end %>
     <% else %>
+      <br/>
       <strong>主催しているイベントはありません</strong>
     <% end %>
   </section>

@@ -18,13 +18,14 @@
 
 // イベント詳細画面
 #create_action {
-
+  margin-top: 20px;
 }
 
 #show_event {
   margin: auto;
   width: 70%;
   .name {
+    margin-bottom: 30px;
   }
   .start_datetime {
     border-bottom:  1px solid #ccc;
@@ -79,9 +80,12 @@
   }
 }
 
-.event_info {
+#show_event .event_info {
+  .start_datetime {
+    margin: 0;
+  }
   text-align: left;
-  margin-bottom: 30px;
+  margin: 0 0 30px 0;
 }
 
 // イベント新規作成/編集画面

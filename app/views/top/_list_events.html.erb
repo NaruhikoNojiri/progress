@@ -7,17 +7,15 @@
         <div class="day"><strong><%= event.start_datetime.day %>日</strong></div>
       </div>
     </div>
-    <div class="event_info_block">
-      <div class="start_datetime"><%= I18n.l(event.start_datetime, format: :very_short) %></div>
-      <div class="event_info">
-        <div class="event_host">
-          <%= profile_img(event.user)%>
-          <%= link_to user_path(event.user) do %><%= event.user.name %> 主催<% end %>
-        </div>
-        <div class="event_name"><strong><%= link_to event_path(event) do %><%= event.name %><% end %></strong></div>
-        <div class="event_place"><%= event.place %></div>
-        <div class="event_place_address"><%= event.place_address %></div>
+    <div class="start_datetime"><%= I18n.l(event.start_datetime, format: :very_short) %></div>
+    <div class="event_info">
+      <div class="event_host">
+        <%= profile_img(event.user)%>
+        <%= link_to user_path(event.user) do %><%= event.user.name %>主催<% end %>
       </div>
+      <div class="event_name"><strong><%= link_to event_path(event) do %><%= event.name %><% end %></strong></div>
+      <div class="event_place"><%= event.place %></div>
+      <div class="event_place_address"><%= event.place_address %></div>
     </div>
   </div>
 </div>

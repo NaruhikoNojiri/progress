@@ -15,7 +15,7 @@
       <h3>概要</h3>
       <%= @event.summary %>
       <h3>参加費</h3>
-      <%= @event.fee %>円
+      <%= show_fee(@event) %>
       <h3>開催地</h3>
       <%= @event.place %><br/>
       <%= @event.place_address %>

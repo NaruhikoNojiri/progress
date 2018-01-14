@@ -62,6 +62,7 @@
   <section id="holding_events">
     <h2 class="section_header">主催イベント一覧</h2>
     <% if @holding_events.blank? %>
+      <br/>
       主催したイベントはありません。
     <% else %>
       <% @holding_events.each do |event| %>
@@ -73,6 +74,7 @@
   <section id="participating_events">
     <h2 class="section_header">参加イベント一覧</h2>
     <% if @participating_events.blank? %>
+      <br/>
       参加したイベントはありません。
     <% else %>
       <% @participating_events.each do |event| %>
@@ -81,7 +83,7 @@
     <% end %>
   </section>
 
-  <h2 class="section_header_long">アカウントのキャンセル</h2>
+  <h2 class="section_header">アカウントのキャンセル</h2>
 
   <p>もう当サイトを利用しませんか? <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete %></p>
 

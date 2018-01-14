@@ -15,8 +15,9 @@
       <%= profile_img(@event.user)%>
       <span class="host_name">
         <%= link_to user_path(@event.user) do %>
-          <%= @event.user.name %>さん主催</span>
+          <%= @event.user.name %>さん主催
         <% end %>
+      </span>
     </div>
     <div class="event_info">
       <h1 class="name"><strong><%= @event.name %></strong></h1>
@@ -61,8 +62,10 @@
   <section id="event_participants">
     <h2 class="section_header">参加者一覧</h2>
     <% if @participants.blank? %>
+      <br/>
       現在このイベントへの申込者はいません
     <% else %>
+      <br/>
       <%= @participants.size %>人が参加予定です！
       <% @participants.each do |participant| %>
       <div class="row">
