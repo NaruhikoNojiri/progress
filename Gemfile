@@ -86,4 +86,7 @@ group :development, :test do
   # 開発環境でしか使用しない環境変数の管理用
   gem 'dotenv-rails'
 
+  # パフォーマンス改善
+  gem 'bullet'
+
 end
